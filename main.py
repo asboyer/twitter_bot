@@ -1,12 +1,13 @@
 import tweepy
 import secret
 import os
+from tweepy import OAuthHandler
 
-auth = tweepy.OAuthHandler(secret.consumer_key, secret.consumer_secret)
+auth = OAuthHandler(secret.consumer_key, secret.consumer_secret)
 auth.set_access_token(secret.access_token, secret.access_token_secret)
 
 api = tweepy.API(auth)
+api.verify_credentials()
 
-for tweet in tweepy.Cursor(api.user_timeline).items():
-    print(os.get_terminal_size().columns * "*")
-    print(tweet.text)
+for tweet in tweepy.Cursor(api.search_tweets, q='asboyer.com').items():
+   print(tweet.user.name)
