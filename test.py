@@ -43,15 +43,15 @@ json_response = search_twitter(query=query, tweet_fields=tweet_fields, bearer_to
 tweets = json_response['data']
 for t in tweets:
     # print(t)
-    if t['id'] in data['ids']:
-        continue
+    # if t['id'] in data['ids']:
+    #     continue
     username = api.get_user(user_id=t['author_id']).screen_name
-    # print(username)
-    reply_id = api.update_status(status=f'@{username} congrats! you found the best website of all time!', in_reply_to_status_id=t['id'], auto_populate_reply_metadata=True).id_str
-    data['ids'].append(t['id'])
-    data['reply_ids'].append(reply_id)
-    data['num'] += 1
-    data['author_ids'].append(t['author_id'])
+    print(username)
+#     reply_id = api.update_status(status=f'@{username} congrats! you found the best website of all time!', in_reply_to_status_id=t['id'], auto_populate_reply_metadata=True).id_str
+#     data['ids'].append(t['id'])
+#     data['reply_ids'].append(reply_id)
+#     data['num'] += 1
+#     data['author_ids'].append(t['author_id'])
     if data['most_popular_author'] == '':
         data['most_popular_author'] = username
     else:
@@ -64,7 +64,7 @@ for t in tweets:
                 m_id = author
         data['most_popular_author'] = api.get_user(user_id=m_id).screen_name
 
-# print(data['most_popular_author'])
-# print(api.get_user(screen_name=data['most_popular_author']).followers_count)
-with open(f'./tweets.json', 'w') as json_file: 
-    json.dump(data, json_file, indent=4)
+print(data['most_popular_author'])
+print(api.get_user(screen_name=data['most_popular_author']).followers_count)
+# with open(f'./tweets.json', 'w') as json_file: 
+#     json.dump(data, json_file, indent=4)
