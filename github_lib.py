@@ -2,14 +2,19 @@ from github import Github
 from secret import gh_access_token
 import pytz
 from datetime import datetime, timezone
+import json
 
 git = Github(gh_access_token)
 
 def get_latest_commit():
     repo = git.get_repo("asboyer/asboyer.com")
     commits = repo.get_commits()
-
-    commit = commits[0]
+    while True:
+        commit = list(commits)[0]
+        if commit.commit.message.startswith('Merge branch \'master\''):
+            commits = commits[1:]
+        else:
+            break
     files = commit.files
     file_list = []
     for f in files:

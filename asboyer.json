@@ -1,8 +1,8 @@
 {
     "files": [
-        "music_current_songs.json"
+        "shows.json"
     ],
-    "date": "2022-01-27 01:01:34 AM",
-    "message": "updated music -- hi hacs",
-    "url": "https://github.com/asboyer/asboyer.com/commit/da57d595b881ce416662cffb4a77fbf212331c06"
+    "date": "2022-01-31 08:30:25 PM",
+    "message": "new show",
+    "url": "https://github.com/asboyer/asboyer.com/commit/2cccdcb39492e79eeaf91ee680d9c6bc7df6290b"
 }
