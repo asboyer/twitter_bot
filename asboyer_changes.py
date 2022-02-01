@@ -6,5 +6,5 @@ while True:
         twitter_lib.new_blog_post()
     except:
         pass
-    twitter_lib.get_asboyer()
+    twitter_lib.git_asboyer()
     time.sleep(3600)
