@@ -93,19 +93,24 @@ def git_asboyer():
     latest_commit = github_lib.get_latest_commit()
     if latest_commit['url'] != last_logged_commit['url']:
         files_str = ""
-        for c in range(len(latest_commit['files'])):
-            files_str += f"- {latest_commit['files'][c]}\n"
+        if len(latest_commit['files']) > 4:
+            file_list = latest_commit['files'][0:5]
+        else:
+            file_list = latest_commit['files']
+        for c in range(len(file_list)):
+            files_str += f"- {file_list[c]}\n"
         status = f"""
 asboyer.com has been updated!
 
 date: {latest_commit['date']}
 message: {latest_commit['message']}
 
-files changed:
+a few files changed:
 {files_str}
 
 {latest_commit['url']}
         """
+        print(status)
         api.update_status(status=status)
         with open(f'./asboyer.json', 'w') as json_file: 
             json.dump(latest_commit, json_file, indent=4)

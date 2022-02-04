@@ -1,8 +1,16 @@
 {
     "files": [
-        "shows.json"
+        "app.py",
+        "music_current.json",
+        "music_current_songs.json",
+        "archive_num.txt",
+        "last.txt",
+        "last_date.txt",
+        "music_current.json",
+        "music_current_songs.json",
+        "242022.html"
     ],
-    "date": "2022-01-31 08:30:25 PM",
-    "message": "new show",
-    "url": "https://github.com/asboyer/asboyer.com/commit/2cccdcb39492e79eeaf91ee680d9c6bc7df6290b"
+    "date": "2022-02-04 03:30:13 AM",
+    "message": "music changes",
+    "url": "https://github.com/asboyer/asboyer.com/commit/63580c27ffb1d556982f7646087098f8e887784b"
 }
