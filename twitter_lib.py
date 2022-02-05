@@ -88,10 +88,8 @@ def wipe():
         json.dump(data, json_file, indent=4)
 
 def git_asboyer():
-    with open(f'./asboyer.json', 'r') as json_file:
-        last_logged_commit = json.load(json_file)
     latest_commit = github_lib.get_latest_commit()
-    if latest_commit['url'] != last_logged_commit['url']:
+    if latest_commit != {}:
         files_str = ""
         if len(latest_commit['files']) > 4:
             file_list = latest_commit['files'][0:5]
@@ -112,8 +110,7 @@ a few files changed:
         """
         print(status)
         api.update_status(status=status)
-        with open(f'./asboyer.json', 'w') as json_file: 
-            json.dump(latest_commit, json_file, indent=4)
+        
 
 def new_blog_post():
     data = asboyer_lib.get_new_post()
